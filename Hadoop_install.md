@@ -142,7 +142,7 @@ A continuación, editamos el fichero **hadoop-env.sh**
 sudo nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 ```
 y añadimos las siguientes líneas:
-> export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+> export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64  
 export HADOOP_CLASSPATH+=" $HADOOP_HOME/lib/*.jar"
 
 Activamos Javax
