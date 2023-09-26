@@ -103,15 +103,15 @@ nano ~/.bashrc
 ```
 y añadimos las variables:
 
-> export HADOOP_HOME=/usr/local/hadoop
-> export HADOOP_INSTALL=$HADOOP_HOME
-> export HADOOP_MAPRED_HOME=$HADOOP_HOME
-> export HADOOP_COMMON_HOME=$HADOOP_HOME
-> export HADOOP_HDFS_HOME=$HADOOP_HOME
-> export YARN_HOME=$HADOOP_HOME
-> export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-> export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
-> export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
+> export HADOOP_HOME=/usr/local/hadoop  
+ export HADOOP_INSTALL=$HADOOP_HOME  
+ export HADOOP_MAPRED_HOME=$HADOOP_HOME  
+ export HADOOP_COMMON_HOME=$HADOOP_HOME  
+ export HADOOP_HDFS_HOME=$HADOOP_HOME  
+ export YARN_HOME=$HADOOP_HOME  
+ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native  
+ export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin  
+ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 
 6. Finalmente, recargamos el bashrc
 ```
@@ -157,12 +157,12 @@ Finalmente, comprobamos que está instalado:
 hadoop -version
 ```
 debería devolver algo como:
-> Hadoop 3.2.1
-> Source code repository https://gitbox.apache.org/repos/asf/hadoop.git -r b3cbbb467e22ea829b3808f4b7b01d07e0bf3842
-> Compiled by rohithsharmaks on 2019-09-10T15:56Z
-> Compiled with protoc 2.5.0
-> From source with checksum 776eaf9eee9c0ffc370bcbc1888737
-> This command was run using /usr/local/hadoop/share/hadoop/common/hadoop-common-3.2.1.jar
+> Hadoop 3.2.1  
+ Source code repository https://gitbox.apache.org/repos/asf/hadoop.git -r b3cbbb467e22ea829b3808f4b7b01d07e0bf3842  
+ Compiled by rohithsharmaks on 2019-09-10T15:56Z  
+ Compiled with protoc 2.5.0  
+ From source with checksum 776eaf9eee9c0ffc370bcbc1888737  
+ This command was run using /usr/local/hadoop/share/hadoop/common/hadoop-common-3.2.1.jar
 
 
 ### Fichero core-site.sh
@@ -181,13 +181,16 @@ Editamos el fichero core-site.xml
 sudo nano $HADOOP_HOME/etc/hadoop/core-site.xml
 ```
 y añadimos esto:
-> <configuration>
-&emsp;   <property>
-&emsp;&emsp;      <name>fs.default.name</name>
-&emsp;&emsp;      <value>hdfs://0.0.0.0:9000</value>
-&emsp;&emsp;      <description>The default file system URI</description>
-&emsp;   </property>
+```xml
+ <configuration>  
+   <property>  
+      <name>fs.default.name</name>  
+      <value>hdfs://0.0.0.0:9000</value>  
+      <description>The default file system URI</description>  
+   </property>  
  </configuration>
+```
+
 
 ### Fichero hdfs-site.sh
 El archivo "hdfs-site.xml" en Hadoop es un archivo de configuración utilizado para establecer propiedades específicas del Sistema de Archivos Distribuido de Hadoop (HDFS). Este archivo es crucial para definir cómo se comporta HDFS y cómo se gestionan y almacenan los datos en un clúster de Hadoop. Algunos de los usos y configuraciones comunes del archivo "hdfs-site.xml" incluyen:
@@ -209,21 +212,22 @@ Editamos el fichero hdfs-site.xml
 sudo nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ```
 y añadimos esto:
-> <configuration>
-&emsp;    <property>
-&emsp;&emsp;       <name>dfs.replication</name>
-&emsp;&emsp;       <value>1</value>
-&emsp;    </property>
-&emsp;    <property>
-&emsp;&emsp;       <name>dfs.name.dir</name>
-&emsp;&emsp;       <value>file:///home/hadoop/hdfs/namenode</value>
-&emsp;    </property>
-&emsp;    <property>
-&emsp;&emsp;       <name>dfs.data.dir</name>
-&emsp;&emsp;       <value>file:///home/hadoop/hdfs/datanode</value>
-&emsp;    </property>
+```xml
+ <configuration>
+    <property>
+       <name>dfs.replication</name>
+       <value>1</value>
+    </property>
+    <property>
+       <name>dfs.name.dir</name>
+       <value>file:///home/hadoop/hdfs/namenode</value>
+    </property>
+    <property>
+       <name>dfs.data.dir</name>
+       <value>file:///home/hadoop/hdfs/datanode</value>
+    </property>
  </configuration>
-
+```
 **Observa** que hemos incluido dos nuevas rutas, por tanto, debemos crearlas en nuestro sistema de ficheros
 ```
 sudo mkdir -p /home/hadoop/hdfs/{namenode,datanode}
@@ -247,13 +251,14 @@ Editamos el fichero mapred-site.xml
 sudo nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ```
 y añadimos esto:
-> <configuration>
-&emsp;    <property>
-&emsp;&emsp;       <name>mapreduce.framework.name</name>
-&emsp;&emsp;       <value>yarn</value>
-&emsp;    </property>
+```xml
+ <configuration>
+    <property>
+       <name>mapreduce.framework.name</name>
+       <value>yarn</value>
+    </property>
  </configuration>
-
+```
 
 ## Fichero yarn-site.xml
 
@@ -276,12 +281,14 @@ Editamos el fichero mapred-site.xml
 sudo nano $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ```
 y añadimos esto:
-> <configuration>
-&emsp;    <property>
-&emsp;&emsp;       <name>yarn.nodemanager.aux-services</name>
-&emsp;&emsp;       <value>mapreduce_shuffle</value>
-&emsp;    </property>
+```xml
+ <configuration>
+    <property>
+       <name>yarn.nodemanager.aux-services</name>
+       <value>mapreduce_shuffle</value>
+    </property>
 </configuration>
+```
 
 **Hemos terminado de configurar Hadoop**
 
@@ -293,9 +300,9 @@ hdfs namenode -format
 ```
 Debería dar una salida como:
 > 2020-06-07 11:35:57,691 INFO util.GSet: VM type       = 64-bit
-> 2020-06-07 11:35:57,692 INFO util.GSet: 0.25% max memory 1.9 GB = 5.0 MB
-> 2020-06-07 11:35:57,692 INFO util.GSet: capacity      = 2^19 = 524288 entries
-> 2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.window.num.buckets = 10
+2020-06-07 11:35:57,692 INFO util.GSet: 0.25% max memory 1.9 GB = 5.0 MB
+2020-06-07 11:35:57,692 INFO util.GSet: capacity      = 2^19 = 524288 entries
+2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.window.num.buckets = 10
 2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.num.users = 10
 2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.windows.minutes = 1,5,25
 2020-06-07 11:35:57,710 INFO namenode.FSNamesystem: Retry cache on namenode is enabled
@@ -322,8 +329,8 @@ start-dfs.sh
 ```
 Dará una salida del tipo:
 > Starting namenodes on [0.0.0.0]
-> Starting datanodes
-> Starting secondary namenodes [ubuntu2004]
+Starting datanodes
+Starting secondary namenodes [ubuntu2004]
 
 Para poner en marcha los administradores de recursos y los nodos de YARN, ejecuta el siguiente comando:
 ```
@@ -331,7 +338,7 @@ start-yarn.sh
 ```
 Salida:
 > Starting resourcemanager
-> Starting nodemanagers
+Starting nodemanagers
 
 Comprueba que todo está arrancado:
 ```
@@ -339,9 +346,9 @@ jps
 ```
 Salida:
 > 5047 NameNode
-> 5850 Jps
-> 5326 SecondaryNameNode
-> 5151 DataNode
+5850 Jps
+5326 SecondaryNameNode
+5151 DataNode
 
 ## Acceso a través de interfaz web
 Acceso al namenode: [http://ip-maquina:9870](http://ip-maquina:9870)
