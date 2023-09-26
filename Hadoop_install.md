@@ -125,7 +125,7 @@ Ahora es necesario configurar las variables de entorno de Java en el archivo **h
 Añadir al las rutas al JDK de Java, para ello, realizamos la siguiente búsqueda.
 1. Buscamos donde está el binario de Java
 ```
-which java
+which javac
 ```
 Debería devolver una salida como:
 > /usr/bin/javac
