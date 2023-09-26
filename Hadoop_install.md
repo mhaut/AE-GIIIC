@@ -25,11 +25,11 @@ Comprobaremos que está instalado bien obteniendo la versión del paquete instal
 java -version
 ```
 Deberíais obtener una salida del estilo:
-```
-openjdk version "11.0.20.1" 2023-08-24
-OpenJDK Runtime Environment (build 11.0.20.1+1-post-Ubuntu-0ubuntu122.04)
+
+> openjdk version "11.0.20.1" 2023-08-24  
+OpenJDK Runtime Environment (build 11.0.20.1+1-post-Ubuntu-0ubuntu122.04)  
 OpenJDK 64-Bit Server VM (build 11.0.20.1+1-post-Ubuntu-0ubuntu122.04, mixed mode, sharing)
-```
+
 
 ## Configuración de Hadoop
 Creamos el usuario _hadoop_
@@ -46,29 +46,28 @@ su - hadoop
 ssh-keygen -t rsa
 ```
 Deberías obtener una salida del tipo
-```
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/hadoop/.ssh/id_rsa): 
-Created directory '/home/hadoop/.ssh'.
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
-Your identification has been saved in /home/hadoop/.ssh/id_rsa
-Your public key has been saved in /home/hadoop/.ssh/id_rsa.pub
-The key fingerprint is:
-SHA256:HG2K6x1aCGuJMqRKJb+GKIDRdKCd8LXnGsB7WSxApno hadoop@ubuntu2004
-The key's randomart image is:
-+---[RSA 3072]----+
-|..=..            |
-| O.+.o   .       |
-|oo*.o + . o      |
-|o .o * o +       |
-|o+E.= o S        |
-|=.+o * o         |
-|*.o.= o o        |
-|=+ o.. + .       |
+
+> Generating public/private rsa key pair.  
+Enter file in which to save the key (/home/hadoop/.ssh/id_rsa):  
+Created directory '/home/hadoop/.ssh'.  
+Enter passphrase (empty for no passphrase):  
+Enter same passphrase again:  
+Your identification has been saved in /home/hadoop/.ssh/id_rsa  
+Your public key has been saved in /home/hadoop/.ssh/id_rsa.pub  
+The key fingerprint is:  
+SHA256:HG2K6x1aCGuJMqRKJb+GKIDRdKCd8LXnGsB7WSxApno hadoop@ubuntu2004  
+The key's randomart image is:  
++---[RSA 3072]----+  
+|..=..            |  
+| O.+.o   .       |  
+|oo*.o + . o      |  
+|o .o * o +       |  
+|o+E.= o S        |  
+|=.+o * o         |  
+|*.o.= o o        |  
+|=+ o.. + .       |  
 |o ..  o .        |
-+----[SHA256]-----+
-```
++----[SHA256]-----+  
 
 Añade la clave al fichero de claves autorizadas:
 ```
@@ -299,27 +298,27 @@ su - hadoop
 hdfs namenode -format
 ```
 Debería dar una salida como:
-> 2020-06-07 11:35:57,691 INFO util.GSet: VM type       = 64-bit
-2020-06-07 11:35:57,692 INFO util.GSet: 0.25% max memory 1.9 GB = 5.0 MB
-2020-06-07 11:35:57,692 INFO util.GSet: capacity      = 2^19 = 524288 entries
-2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.window.num.buckets = 10
-2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.num.users = 10
-2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.windows.minutes = 1,5,25
-2020-06-07 11:35:57,710 INFO namenode.FSNamesystem: Retry cache on namenode is enabled
-2020-06-07 11:35:57,710 INFO namenode.FSNamesystem: Retry cache will use 0.03 of total heap and retry cache entry expiry time is 600000 millis
-2020-06-07 11:35:57,712 INFO util.GSet: Computing capacity for map NameNodeRetryCache
-2020-06-07 11:35:57,712 INFO util.GSet: VM type       = 64-bit
-2020-06-07 11:35:57,712 INFO util.GSet: 0.029999999329447746% max memory 1.9 GB = 611.9 KB
-2020-06-07 11:35:57,712 INFO util.GSet: capacity      = 2^16 = 65536 entries
-2020-06-07 11:35:57,743 INFO namenode.FSImage: Allocated new BlockPoolId: BP-1242120599-69.87.216.36-1591529757733
-2020-06-07 11:35:57,763 INFO common.Storage: Storage directory /home/hadoop/hdfs/namenode has been successfully formatted.
-2020-06-07 11:35:57,817 INFO namenode.FSImageFormatProtobuf: Saving image file /home/hadoop/hdfs/namenode/current/fsimage.ckpt_0000000000000000000 using no compression
-2020-06-07 11:35:57,972 INFO namenode.FSImageFormatProtobuf: Image file /home/hadoop/hdfs/namenode/current/fsimage.ckpt_0000000000000000000 of size 398 bytes saved in 0 seconds .
-2020-06-07 11:35:57,987 INFO namenode.NNStorageRetentionManager: Going to retain 1 images with txid >= 0
-2020-06-07 11:35:58,000 INFO namenode.FSImage: FSImageSaver clean checkpoint: txid=0 when meet shutdown.
-2020-06-07 11:35:58,003 INFO namenode.NameNode: SHUTDOWN_MSG: 
-/************************************************************
-SHUTDOWN_MSG: Shutting down NameNode at ubuntu2004/69.87.216.36
+> 2020-06-07 11:35:57,691 INFO util.GSet: VM type       = 64-bit  
+2020-06-07 11:35:57,692 INFO util.GSet: 0.25% max memory 1.9 GB = 5.0 MB  
+2020-06-07 11:35:57,692 INFO util.GSet: capacity      = 2^19 = 524288 entries  
+2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.window.num.buckets = 10  
+2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.num.users = 10  
+2020-06-07 11:35:57,706 INFO metrics.TopMetrics: NNTop conf: dfs.namenode.top.windows.minutes = 1,5,25  
+2020-06-07 11:35:57,710 INFO namenode.FSNamesystem: Retry cache on namenode is enabled  
+2020-06-07 11:35:57,710 INFO namenode.FSNamesystem: Retry cache will use 0.03 of total heap and retry cache entry expiry time is 600000 millis  
+2020-06-07 11:35:57,712 INFO util.GSet: Computing capacity for map NameNodeRetryCache  
+2020-06-07 11:35:57,712 INFO util.GSet: VM type       = 64-bit  
+2020-06-07 11:35:57,712 INFO util.GSet: 0.029999999329447746% max memory 1.9 GB = 611.9 KB  
+2020-06-07 11:35:57,712 INFO util.GSet: capacity      = 2^16 = 65536 entries  
+2020-06-07 11:35:57,743 INFO namenode.FSImage: Allocated new BlockPoolId: BP-1242120599-69.87.216.36-1591529757733  
+2020-06-07 11:35:57,763 INFO common.Storage: Storage directory /home/hadoop/hdfs/namenode has been successfully formatted.  
+2020-06-07 11:35:57,817 INFO namenode.FSImageFormatProtobuf: Saving image file /home/hadoop/hdfs/namenode/current/fsimage.ckpt_0000000000000000000 using no compression  
+2020-06-07 11:35:57,972 INFO namenode.FSImageFormatProtobuf: Image file /home/hadoop/hdfs/namenode/current/fsimage.ckpt_0000000000000000000 of size 398 bytes saved in 0 seconds.  
+2020-06-07 11:35:57,987 INFO namenode.NNStorageRetentionManager: Going to retain 1 images with txid >= 0  
+2020-06-07 11:35:58,000 INFO namenode.FSImage: FSImageSaver clean checkpoint: txid=0 when meet shutdown.  
+2020-06-07 11:35:58,003 INFO namenode.NameNode: SHUTDOWN_MSG:  
+/************************************************************  
+SHUTDOWN_MSG: Shutting down NameNode at ubuntu2004/69.87.216.36  
 ************************************************************/
 
 ## Arranque de Hadoop
@@ -328,8 +327,8 @@ En primer lugar, inicia el NameNode y el DataNode con el siguiente comando:
 start-dfs.sh
 ```
 Dará una salida del tipo:
-> Starting namenodes on [0.0.0.0]
-Starting datanodes
+> Starting namenodes on [0.0.0.0]  
+Starting datanodes  
 Starting secondary namenodes [ubuntu2004]
 
 Para poner en marcha los administradores de recursos y los nodos de YARN, ejecuta el siguiente comando:
@@ -337,7 +336,7 @@ Para poner en marcha los administradores de recursos y los nodos de YARN, ejecut
 start-yarn.sh
 ```
 Salida:
-> Starting resourcemanager
+> Starting resourcemanager  
 Starting nodemanagers
 
 Comprueba que todo está arrancado:
@@ -345,13 +344,13 @@ Comprueba que todo está arrancado:
 jps
 ```
 Salida:
-> 5047 NameNode
-5850 Jps
-5326 SecondaryNameNode
+> 5047 NameNode  
+5850 Jps  
+5326 SecondaryNameNode  
 5151 DataNode
 
 ## Acceso a través de interfaz web
-Acceso al namenode: [http://ip-maquina:9870](http://ip-maquina:9870)
-Acceso al datanode: [http://ip-maquina:9864](http://ip-maquina:9864)
+Acceso al namenode: [http://ip-maquina:9870](http://ip-maquina:9870)  
+Acceso al datanode: [http://ip-maquina:9864](http://ip-maquina:9864)  
 Acceso al gestor de recursos [http://ip-maquina:8088](http://ip-maquina:8088)
 
