@@ -153,7 +153,7 @@ sudo wget https://jcenter.bintray.com/javax/activation/javax.activation-api/1.2.
 
 Finalmente, comprobamos que está instalado:
 ```
-hadoop -version
+hadoop version
 ```
 debería devolver algo como:
 > Hadoop 3.2.1  
