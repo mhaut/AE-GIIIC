@@ -15,6 +15,12 @@ Comprobar que tenemos el sistema operativo actualizado
 sudo apt update && sudo apt upgrade && sudo apt dist-upgrade
 ```
 
+## Instalar Servidor SSH
+Para utilizar Apache Hadoop, es necesario acceder de manera remota a las máquinas. Para ello, vamos a realizar la instalación del paquete que monta un servidor SSH con el siguiente comando:
+```
+sudo apt install openssh-server
+```
+
 ## Instalar Java
 Para utilizar Apache Hadoop, es esencial contar con Java en tu sistema. Puedes realizar la instalación de Java utilizando el siguiente comando:
 ```
